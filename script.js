@@ -1,16 +1,23 @@
-function Player(name, mark) {
-    this.name = name;
-    this.mark = mark;
+const Players = {
+    playerOne: {
+        name: 'Player 1',
+        mark: 'X'
+    },
+    playerTwo: {
+        name: 'Player 2',
+        mark: 'O'
+    }
 }
+console.log(Players)
 
 const gameBoard = {
     board: [1, 2, 3, 4, 5, 6, 7, 8, 9],
-    playerOne: new Player('John', 'X'),
-    playerTwo: new Player('Doe', 'O'),
+    
     gameplay: function play(player, boardSquare) {
         let i = boardSquare
+        
 
-        if (player == 'John') {
+        if (player == 'Player 1') {
             this.board[i] = 'X'
             console.log(gameBoard.board)
         } else {
@@ -19,6 +26,7 @@ const gameBoard = {
         }
     },
     WinnerPlayerOne: function check(){
+        
         if(this.board[0] == 'X' && this.board[1] == 'X' && this.board[2] == 'X'){
             console.log('John wins')
         }
@@ -38,7 +46,7 @@ const gameBoard = {
             console.log('John wins')
         }
         else if(this.board[0] == 'X' && this.board[4] == 'X' && this.board[8] == 'X'){
-            console.log('John wins')
+            console.log('Player 1 wins')
         }
         else if(this.board[2] == 'X' && this.board[4] == 'X' && this.board[6] == 'X'){
             console.log('John wins')
@@ -49,7 +57,7 @@ const gameBoard = {
         
     },
 
-    WinnerPlayerTwo: function check(){
+    WinnerPlayerTwo: function check() {
         if(this.board[0] == 'O' && this.board[1] == 'O' && this.board[2] == 'O'){
             console.log('Doe wins')
         }
@@ -91,15 +99,46 @@ const checkResult = () => {
     return gameBoard.WinnerPlayerOne(), gameBoard.WinnerPlayerTwo(), gameBoard.drawGame()
 }
 
-// WINNER PLAYER ONE SCENARIO
+const gameController = {
+    board: function generateBoard () {
+        const gameBox = document.createElement('div')
+        document.body.appendChild(gameBox)
+        const board = document.createElement('div')
+        board.classList.add('board')
+        gameBox.appendChild(board)
+        function createBoardCell () {
+            for (let i=1; i<= 9; i++) {
+                const square = document.createElement('div')
+                board.appendChild(square)
+            }
+        }
+        createBoardCell()
+    },
+}
 
-gameBoard.gameplay('John', 0)
-gameBoard.gameplay('Doe', 3)
-gameBoard.gameplay('John', 4)
-gameBoard.gameplay('Doe', 5)
-gameBoard.gameplay('John', 8)
+
+let gameInitialization = gameController.board
+gameInitialization()
+
+
+
+
+
+
+
+
+
+
+
+// // WINNER PLAYER ONE SCENARIO
+// gameBoard.gameplay('Player 1', 0)
+// gameBoard.gameplay('Player 2', 3)
+// gameBoard.gameplay('Player 1', 4)
+// gameBoard.gameplay('Player 2', 5)
+// gameBoard.gameplay('Player 1', 8)
 
 //DRAW SCENARIO
+
 // gameBoard.gameplay('John', 0)
 // gameBoard.gameplay('Doe', 1)
 // gameBoard.gameplay('John', 2)
