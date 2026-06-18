@@ -1,8 +1,36 @@
-.board{
+.body {
     display: flex;
 }
 
+.gameBox{
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+}
+.board{
+    display: flex;
+    width: 686px;
+    height: 686px;
+    flex-wrap: wrap;
+    background-color: rgb(183, 165, 199);
+}
+
 .square {
-    width: 10px;
-    height: 10px;
+    background-color: blueviolet;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.score{
+    height: 58px;
+    width: 685px;
+    background-color: rgb(255, 217, 167);
+    border-style: '1px solid black';
+    
+}
+
+.start {
+    width: 49px;
+    height: 29px;
 }
